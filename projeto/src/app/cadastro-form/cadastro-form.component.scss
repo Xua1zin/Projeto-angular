@@ -1,19 +1,16 @@
-.novo-btn{
+.novo-btn, .salvar-btn{
     background-color: #60BF78;
     color: #0D0D0D !important;
 }
-.novo-btn:hover{
+
+.salvar-btn{
+    border: none;
+}
+
+.salvar-btn:hover, .novo-btn:hover{
     background-color: #79F297;
 }
 
-.salvar-btn{
-    background-color: #60BF78;
-    border: none;
-    color: #0D0D0D;
-}
-.salvar-btn:hover{
-    background-color: #79F297;
-}
 .modal-body-background{
     background-color: #e8e7e3;
     border-bottom-left-radius: 6px;
@@ -40,4 +37,34 @@
 
 label{
     padding-top:10px;
+}
+
+@media (max-width: 575px) {
+    .novo-btn, .salvar-btn {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .btn-close {
+        font-size: 12px;
+    }
+
+    label {
+        font-size: 12px;
+        padding-top: 5px;
+    }
+
+    input.form-control, select.form-select {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .modal-header h5 {
+        font-size: 16px;
+    }
+
+    .modal-body {
+        padding: 10px;
+    }
+
 }

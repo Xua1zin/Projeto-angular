@@ -70,9 +70,9 @@ export class CadastroFormComponent {
       camposValidos.cep
     ) {
       this.clienteService.addCliente(this.cliente);
-      alert('Cliente cadastrado com sucesso!');
       this.cliente = new Client();
       this.submitted = false;
+      this.cliente.tipoCliente = this.tipos[0];
     } else {
       alert('Por favor, preencha todos os campos obrigatórios.');
     }
@@ -80,12 +80,7 @@ export class CadastroFormComponent {
 
   //função que abre o modal
   openModal(content: any) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
-  }
-
-  //função que seta o tipoCliente para Fisico e não deixar em branco (é de preferência
-  //e como é obrigatório, prefiro que fique preenchido sempre)
-  ngOnInit() {
     this.cliente.tipoCliente = this.tipos[0];
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 }

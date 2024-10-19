@@ -19,6 +19,9 @@ export class ClientListComponent {
     if (isPlatformBrowser(this.platformId)) {
       this.clientService.clientes$.subscribe(clientes => {
         this.clientes = clientes;
+        for (let cliente of clientes) {
+          console.log(`Cliente: ${cliente.nome}, Tipo: ${cliente.tipoCliente}`);
+        }
       });
     }
   }

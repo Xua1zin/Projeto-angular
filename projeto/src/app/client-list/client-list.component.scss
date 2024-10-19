@@ -28,3 +28,21 @@
 .last-row-left{
     border-bottom-left-radius: 10px;
 }
+
+@media (max-width: 575px) {
+    .table-custom-header, .table-custom-body-td {
+        font-size: 12px;
+    }
+
+    .table-custom-header {
+        background-color: #60BF78 !important;
+        border: none;
+        color: #0D0D0D;
+        padding: 8px;
+    }
+
+    .table-custom-body-td {
+        font-size: 12px;
+        padding: 5px;
+    }
+}
