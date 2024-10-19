@@ -1,0 +1,43 @@
+.novo-btn{
+    background-color: #60BF78;
+    color: #0D0D0D !important;
+}
+.novo-btn:hover{
+    background-color: #79F297;
+}
+
+.salvar-btn{
+    background-color: #60BF78;
+    border: none;
+    color: #0D0D0D;
+}
+.salvar-btn:hover{
+    background-color: #79F297;
+}
+.modal-body-background{
+    background-color: #e8e7e3;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.div-salvar-btn{
+    padding-top: 2%;
+    display: flex;
+    justify-content: end;
+}
+
+.btn-close{
+    background-color: transparent;
+    color: #555;
+}
+.btn-close:hover{
+    opacity: 1;
+}
+
+#first-label{
+    padding-top: 0;
+}
+
+label{
+    padding-top:10px;
+}

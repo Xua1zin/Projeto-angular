@@ -1,0 +1,102 @@
+<div>
+    <div class="container" style="padding-top: 1%; padding-bottom: 4%;">
+        <button type="button" class="btn novo-btn" (click)="openModal(view)">Novo</button>
+    </div>
+
+    <div>
+        <ng-template #view let-modal>
+            <div class="modal-header" style="background-color: #60BF78; border: #333;">
+                <h5 class="modal-title">Cadastro</h5>
+                <button type="button" class="btn-close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"></button>
+            </div>
+
+            <div class="modal-body modal-body-background">
+                <form (ngSubmit)="salvarCliente()">
+                    <div>
+                        <label id="first-label">Tipo:</label>
+                        <select class="form-select" style="background-color: #f7f6f4;" [(ngModel)]="cliente.tipoCliente"
+                            name="tipoCliente" required>
+                            @for(tipo of tipos; track $index){
+                            <option [value]="tipo">{{ tipo }}</option>
+                            }
+                        </select>
+                    </div>
+            
+                    <div>
+                        @if(cliente.tipoCliente === 'Jurídica'){
+                        <label>CNPJ:</label>
+                        }
+                        @else{
+                        <label>CPF:</label>
+                        }
+                        <input type="text" [(ngModel)]="cliente.documento" name="documento" class="form-control"
+                        style="background-color: #f7f6f4;"
+                        [placeholder]="cliente.tipoCliente === 'Jurídica' ? '00.000.000/0000-00' : '000.000.000-00'"
+                        required
+                        mask="{{ cliente.tipoCliente === 'Jurídica' ? '00.000.000/0000-00' : '000.000.000-00' }}" 
+                        required [ngClass]="{'is-invalid': !validarCampos().documento && submitted}">
+                    </div>
+            
+                    <div>
+                        <label>Nome:</label>
+                        <input type="text" [(ngModel)]="cliente.nome" name="nome" placeholder="Nome" required
+                            class="form-control" style="background-color: #f7f6f4;" 
+                            [ngClass]="{'is-invalid': !validarCampos().nome && submitted}">
+                    </div>
+            
+                    @if(cliente.tipoCliente === 'Jurídica'){
+                        <div>
+                            <label>Nome Fantasia:</label>
+                            <input type="text" [(ngModel)]="cliente.nomeFantasia" name="nomeFantasia" class="form-control"
+                                style="background-color: #f7f6f4;" placeholder="Nome Fantasia">
+                        </div>
+                    }
+                    
+                    <div>
+                        <label>CEP:</label>
+                        <input type="text" [(ngModel)]="cliente.cep" name="cep" placeholder="00000-000"
+                            class="form-control" style="background-color: #f7f6f4;" (blur)="buscarEndereco()"
+                            mask="00000-000" required [ngClass]="{'is-invalid': !validarCampos().cep && submitted}">
+                    </div>
+                    
+                    <div>
+                        <label>Endereço:</label>
+                        <input type="text" [(ngModel)]="cliente.endereco" name="endereco" placeholder="Rua de Exemplo"
+                            class="form-control" style="background-color: #f7f6f4;" required
+                            [ngClass]="{'is-invalid': !validarCampos().endereco && submitted}">
+                    </div>
+                    
+                    <div>
+                        <label>Bairro:</label>
+                        <input type="text" [(ngModel)]="cliente.bairro" name="bairro" placeholder="Bairro" required
+                            class="form-control" style="background-color: #f7f6f4;">
+                    </div>
+                    
+                    <div>
+                        <label>Cidade:</label>
+                        <input type="text" [(ngModel)]="cliente.cidade" name="cidade" placeholder="Estado" required
+                            class="form-control" style="background-color: #f7f6f4;">
+                    </div>
+                    
+                    <div>
+                        <label>Telefone:</label>
+                        <input type="text" [(ngModel)]="cliente.telefone" name="telefone" mask="(00) 00000-0000"
+                            class="form-control" style="background-color: #f7f6f4;" placeholder="(00) 00000-0000">
+                    </div>
+                    
+                    <div>
+                        <label>E-mail:</label>
+                        <input type="email" [(ngModel)]="cliente.email" name="email" placeholder="example@example.com"
+                            class="form-control" style="background-color: #f7f6f4;" required
+                            [ngClass]="{'is-invalid': !validarCampos().email && submitted}">
+                    </div>
+                    
+                    <div class="div-salvar-btn">
+                        <button type="submit" class="btn btn-primary salvar-btn">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </ng-template>
+    </div>
+</div>
