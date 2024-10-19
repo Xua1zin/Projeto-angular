@@ -88,8 +88,10 @@
                     <div>
                         <label>E-mail:</label>
                         <input type="email" [(ngModel)]="cliente.email" name="email" placeholder="example@example.com"
-                            class="form-control" style="background-color: #f7f6f4;" required
-                            [ngClass]="{'is-invalid': !validarCampos().email && submitted}">
+                            class="form-control" style="background-color: #f7f6f4;" required email
+                            #email="ngModel"
+                            [ngClass]="{'is-invalid': (!validarCampos().email && submitted)
+                                || (!email.valid && email.touched)}">
                     </div>
                     
                     <div class="div-salvar-btn">

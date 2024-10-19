@@ -57,7 +57,8 @@ export class CadastroFormComponent {
   submitted!: boolean;
 
   //função que salva os clientes chamada quando aperta o botão, ela verifica se os
-  //campos estão preenchidos, retorna um alerta caso não e cria um objeto de cliente
+  //campos estão preenchidos e se o e-mail está dentro do padrão, 
+  //então retorna um alerta caso não, e caso sim, cria um objeto de cliente
   salvarCliente() {
     this.submitted = true;
     const camposValidos = this.validarCampos();
@@ -69,6 +70,12 @@ export class CadastroFormComponent {
       camposValidos.endereco &&
       camposValidos.cep
     ) {
+      const emailInput = document.querySelector('input[name="email"]');
+      if (emailInput && emailInput.classList.contains('ng-invalid')) {
+        alert('Por favor, insira um e-mail válido.');
+        return;
+      }
+
       this.clienteService.addCliente(this.cliente);
       this.cliente = new Client();
       this.submitted = false;
