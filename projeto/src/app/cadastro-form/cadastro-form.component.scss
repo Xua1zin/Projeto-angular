@@ -1,48 +1,78 @@
-.novo-btn, .salvar-btn{
+.container {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+.modal-header {
+    background-color: #60BF78;
+    border: #333;
+}
+
+.novo-btn, .salvar-btn {
     background-color: #60BF78;
     color: #0D0D0D !important;
 }
 
-.salvar-btn{
+.salvar-btn {
     border: none;
 }
 
-.salvar-btn:hover, .novo-btn:hover{
+.salvar-btn:hover, .novo-btn:hover {
     background-color: #79F297;
 }
 
-.modal-body-background{
+.form-control, .form-select {
+    background-color: #f7f6f4;
+}
+
+.modal-body {
     background-color: #e8e7e3;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
 }
 
-.div-salvar-btn{
-    padding-top: 2%;
+.div-salvar-btn {
+    padding-top: 25px;
     display: flex;
     justify-content: end;
 }
 
-.btn-close{
+.btn-close {
     background-color: transparent;
     color: #555;
 }
-.btn-close:hover{
+
+.btn-close:focus,
+.btn-close:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-close:hover {
     opacity: 1;
 }
 
-#first-label{
+#first-label {
     padding-top: 0;
 }
 
-label{
-    padding-top:10px;
+label {
+    padding-top: 10px;
 }
 
+
+/*tomei a liberdade de fazer ficar mais usável para o celular e table, aumentando
+o tamanho dos botões*/
 @media (max-width: 575px) {
     .novo-btn, .salvar-btn {
         font-size: 12px;
         padding: 8px;
+        width: 100%;
+    }
+
+    .container {
+        padding-top: 1.4rem;
+        padding-bottom: 2.5rem;
     }
 
     .btn-close {
@@ -66,5 +96,15 @@ label{
     .modal-body {
         padding: 10px;
     }
+}
 
+@media (min-width: 576px) and (max-width: 810px) {
+    .salvar-btn {
+        width: 50% !important;
+    }
+
+    .div-salvar-btn {
+        display: flex;
+        justify-content: center;
+    }
 }
