@@ -1,0 +1,46 @@
+<div class="container">
+    <table class="table table-bordered table-class shadow p-3 mb-5 bg-body rounded">
+        <thead>
+            <tr style="border: none;">
+                <th class="col-1 fw-bold table-custom-header" style="border-top-left-radius: 10px;">
+                    Codigo
+                </th>
+                <th class="col-3 fw-bold table-custom-header">
+                    Nome
+                </th>
+                <th class="col-3 fw-bold table-custom-header">
+                    Endereço
+                </th>
+                <th class="col-5 fw-bold table-custom-header" style="border-top-right-radius: 10px;">
+                    E-mail
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(clientes.length == 0){
+            <tr class="table-custom-body-tr">
+                <td colspan="4" class="table-custom-body-td last-row-left last-row-right text-center">
+                    Nenhum cliente encontrado
+                </td>
+            </tr>
+            }@else{
+                @for(cliente of clientes; track $index){
+                    <tr class="table-custom-body-tr">
+                        @if($index + 1 == clientes.length){
+                            <td class="table-custom-body-td last-row-left">{{ $index + 1 }}</td>
+                        }@else {
+                            <td class="table-custom-body-td">{{ $index + 1 }}</td>
+                        }
+                        <td class="table-custom-body-td">{{ cliente.nome }}</td>
+                        <td class="table-custom-body-td">{{ cliente.endereco }}</td>
+                        @if($index + 1 == clientes.length){
+                            <td class="table-custom-body-td last-row-right"> {{ cliente.email }}</td>
+                        }@else {
+                            <td class="table-custom-body-td"> {{ cliente.email }}</td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
