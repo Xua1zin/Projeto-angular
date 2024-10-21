@@ -52,41 +52,10 @@ export class CadastroFormComponent {
     };
   }
 
+  
   //criei esse submitted para verificar se quando salva, os campos foram preenchidos,
   //e assim poder alterar a classe
   submitted!: boolean;
-
-  // Função para validar CPF
-  validarCPF(cpf: string): boolean {
-    cpf = cpf.replace(/\D/g, '');
-
-    let soma = 0;
-    let resto: number;
-
-    // Valida o primeiro dígito
-    for (let i = 1; i <= 9; i++) {
-      soma += parseInt(cpf.charAt(i - 1)) * (11 - i);
-    }
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) {
-      resto = 0;
-    }
-    if (resto !== parseInt(cpf.charAt(9))) {
-      return false;
-    }
-
-    soma = 0;
-
-    // Valida o segundo dígito
-    for (let i = 1; i <= 10; i++) {
-      soma += parseInt(cpf.charAt(i - 1)) * (12 - i);
-    }
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) {
-      resto = 0;
-    }
-    return resto === parseInt(cpf.charAt(10));
-  }
 
   //função que salva os clientes chamada quando aperta o botão, ela verifica se os
   //campos estão preenchidos e se o e-mail está dentro do padrão,
@@ -102,11 +71,6 @@ export class CadastroFormComponent {
       camposValidos.endereco &&
       camposValidos.cep
     ) {
-      if (!this.validarCPF(this.cliente.documento)) {
-        alert('Por favor, insira um CPF válido.');
-        return;
-      }
-
       const emailInput = document.querySelector('input[name="email"]');
       if (emailInput && emailInput.classList.contains('ng-invalid')) {
         alert('Por favor, insira um e-mail válido.');
