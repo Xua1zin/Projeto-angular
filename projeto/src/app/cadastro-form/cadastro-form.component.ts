@@ -52,6 +52,7 @@ export class CadastroFormComponent {
     };
   }
 
+  
   //criei esse submitted para verificar se quando salva, os campos foram preenchidos,
   //e assim poder alterar a classe
   submitted!: boolean;
